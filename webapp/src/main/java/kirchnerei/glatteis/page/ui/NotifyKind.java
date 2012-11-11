@@ -13,16 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package kirchnerei.glatteis.page.ui;
 
 import org.apache.commons.lang.StringUtils;
 
 /**
- * Project: @PROJECT_NAME@
- * User: sarah
- * Date: 02.11.12
- * Publish: @PROJECT_PUBLISH@
+ * @see NotifyList
  */
 public enum NotifyKind {
 

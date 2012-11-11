@@ -20,6 +20,16 @@ import org.apache.click.Page;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the notify view of an notify list.
+ *
+ * <p>
+ *     Render the notify view is with the velocity macro <b>notifylist</b> possible. This macro is
+ *     defined in the global file <b>macro.vm</b> in the root of the web context.
+ * </p>
+ *
+ * @see NotifyList
+ */
 public class NotifyView {
 
 	private final String title;
@@ -28,7 +38,12 @@ public class NotifyView {
 
 	private final List<String> messages;
 
-
+	/**
+	 * Internal constructor
+	 * @param title the title of the notify
+	 * @param style the css style of the notify
+	 * @param messages the list of messages
+	 */
 	private NotifyView(String title, String style, List<String> messages) {
 		this.title = title;
 		this.style = style;
@@ -50,9 +65,9 @@ public class NotifyView {
 	/**
 	 * Create a message view with the title, style and a list of messages
 	 *
-	 * @param page
-	 * @param list
-	 * @return
+	 * @param page the page
+	 * @param list the notify list
+	 * @return the notifyView instance for render in the page html resource.
 	 */
 	public static NotifyView createMessageView(Page page, NotifyList list) {
 		String titleKey = String.format("message.%s.title", list.getKind());

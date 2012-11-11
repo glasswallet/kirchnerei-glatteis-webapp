@@ -24,6 +24,6 @@ public class HomePage extends CommonPage {
 		addMenu("imprint");
 		addMenu("login");
 		addScriptAction(ScriptActionResource.HOME_USER_LOGOUT);
-		addNotify("message.hallo");
+		addNotifyMessage("message.hallo");
 	}
 }

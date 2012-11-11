@@ -14,7 +14,8 @@
 ## limitations under the License.
 ##
 
-
+##
+## render the notify list of this is exist
 #macro ( notifylist $notify )
 
 	#if ($notify)

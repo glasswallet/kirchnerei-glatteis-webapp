@@ -20,6 +20,15 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * The Notification List contains messages for the current request. This messages will sent to
+ * the client and then will removed from the session.
+ *
+ * <p>
+ *     <b>Note</b>: if a post request is received then the notification must not be removed from
+ *     the session.
+ * </p>
+ */
 public class NotifyList implements Iterable<NotifyList.Message>, Serializable {
 
 	private static final long serialVersionUID = -8964725509375542176L;

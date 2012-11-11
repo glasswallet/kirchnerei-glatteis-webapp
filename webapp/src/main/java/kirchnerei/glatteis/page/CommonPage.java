@@ -125,6 +125,11 @@ public class CommonPage extends Page implements CompositeInit {
 		scriptAction.add(action);
 	}
 
+	/**
+	 * Returns the notify list. if the list is not exist, the will be created.
+	 *
+	 * @return notify list
+	 */
 	public NotifyList getNotifyList() {
 		Context ctx = getContext();
 		Object o = ctx.getSessionAttribute(NotifyList.KEY);
@@ -135,20 +140,48 @@ public class CommonPage extends Page implements CompositeInit {
 		return ClassUtils.cast(o, NotifyList.class);
 	}
 
+	/**
+	 * Sets the kind of notification
+	 * @param kind the kind of notification
+	 * @return the notify list
+	 */
 	public NotifyList setNotifyKind(NotifyKind kind) {
 		NotifyList list = getNotifyList();
 		list.setKind(kind);
 		return list;
 	}
 
-	public NotifyList addNotify(NotifyKind kind, String message, Object... args) {
+	/**
+	 * add a notify messages to the current request and set the kind of notification.
+	 *
+	 * <p>
+	 *     the parameter 'message' is a symbolic key for the real message that inserted at rendering.
+	 * </p>
+	 *
+	 * @param kind the kind of notification
+	 * @param message the symbolic message name
+	 * @param args the arguments
+	 * @return the notify list
+	 */
+	public NotifyList addNotifyMessage(NotifyKind kind, String message, Object... args) {
 		NotifyList list = getNotifyList();
 		list.setKind(kind);
 		list.addMessage(message, args);
 		return list;
 	}
 
-	public NotifyList addNotify(String message, Object... args) {
+	/**
+	 * add a notify messages to the current request.
+	 *
+	 * <p>
+	 *     the parameter 'message' is a symbolic key for the real message that inserted at rendering.
+	 * </p>
+	 *
+	 * @param message
+	 * @param args
+	 * @return
+	 */
+	public NotifyList addNotifyMessage(String message, Object... args) {
 		NotifyList list = getNotifyList();
 		list.addMessage(message, args);
 		return list;

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<status>dialog</status>
+	<content><![CDATA[
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<h3 id="myModalLabel">$messages.pageTitle</h3>
+</div>
+#parse($path)
+]]></content>
+	<actionlist><![CDATA[$actionlist]]></actionlist>
+</page>

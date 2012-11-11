@@ -1,6 +1,11 @@
+# Jetbrains Idea
+.idea
+*.iml
 *.class
 
+
 # Package Files #
+target
 *.jar
 *.war
 *.ear

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>$messages.pageTitle - $messages.appTitle</title>
+
+<link rel="stylesheet" type="text/css" href="$context/assets/css/bootstrap.css">
+<!--[if IE 7]>
+<link rel="stylesheet" type="text/css" href="$context/assets/css/font-awesome-ie7.css">
+<![endif]-->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div id="navigation">
+#parse($navigation)
+</div>
+
+<div class="container">
+#parse($path)
+	<hr>
+	<footer>
+
+	</footer>
+</div>
+
+<div id="dialog" class="modal fade" role="dialog" aria-labelledby="dialog" aria-hidden="true">
+</div>
+
+<div id="notify">
+#notifylist($notify)
+</div>
+
+<script type="text/javascript" src="$context/assets/js/jquery.js"></script>
+<script type="text/javascript">
+	website.initApplication('${context}', '$actionlist');
+</script>
+</body>
+</html>

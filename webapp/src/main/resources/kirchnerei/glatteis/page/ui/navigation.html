@@ -1,0 +1,49 @@
+<div class="navbar navbar-static-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="link-action brand" role="as-dialog" href="$context/$messages.appBrandLink">$messages.appBrandName</a>
+			<div class="nav-collapse collapse">
+#if ($menulist)
+				<ul class="nav">
+#foreach ($menu in $menulist)
+	#if ($menu.beforeDivider)
+					<li class="divider-vertical"></li>
+	#end
+	#if ($menu.hasChildren())
+					<li#if($menu.active) class="active"#end>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						#if ($menu.hasIcon()) <i class="icon-$menu.icon"></i>#end $menu.text
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+		#foreach ($item in $menu.childList)
+						<li#if($item.active) class="active"#end>
+						<a href="$context/$item.link" class="link-action" role="$item.role">
+							#if ($item.hasIcon()) <i class="icon-$item.icon"></i>#end $item.text
+						</a>
+						</li>
+		#end
+					</ul>
+					</li>
+	#else
+					<li#if($menu.active) class="active"#end>
+					<a href="$context/$menu.link" class="link-action" role="$menu.role">
+						#if ($menu.hasIcon()) <i class="icon-$menu.icon"></i>#end $menu.text
+					</a>
+					</li>
+	#end
+	#if ($menu.afterDivider)
+					<li class="divider-vertical"></li>
+	#end
+#end
+				</ul>
+#end
+			</div>
+		</div>
+	</div>
+</div>

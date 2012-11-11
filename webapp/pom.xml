@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>kirchnerei-glatteis</artifactId>
+		<groupId>kirchnerei-glatteis</groupId>
+		<version>0.1</version>
+	</parent>
+	<artifactId>kirchnerei-glatteis-webapp</artifactId>
+
+	<packaging>war</packaging>
+
+	<name>kirchnerei-glatteis-webapp</name>
+
+	<organization>
+		<name>kirchnerei</name>
+		<url>http://www.kirchnerei.de</url>
+	</organization>
+
+	<dependencies>
+		<!-- Dependencies to library "Grundstein" -->
+		<dependency>
+			<groupId>kirchnerei-grundstein</groupId>
+			<artifactId>kirchnerei-grundstein-webapp</artifactId>
+			<version>${grundstein.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>kirchnerei-grundstein</groupId>
+			<artifactId>kirchnerei-grundstein-click</artifactId>
+			<version>${grundstein.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>kirchnerei-grundstein</groupId>
+			<artifactId>kirchnerei-grundstein-persistence</artifactId>
+			<version>${grundstein.version}</version>
+		</dependency>
+
+		<!-- Dependencies for webapp -->
+		<dependency>
+			<groupId>org.tuckey</groupId>
+			<artifactId>urlrewritefilter</artifactId>
+			<version>4.0.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.click</groupId>
+			<artifactId>click</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.click</groupId>
+			<artifactId>click-extras</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.0.6</version>
+		</dependency>
+
+
+		<!-- Scope Provide -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Test Scope -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+
+
+		<plugins>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>yuicompressor-maven-plugin</artifactId>
+				<version>1.3.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compress</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<nosuffix>true</nosuffix>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

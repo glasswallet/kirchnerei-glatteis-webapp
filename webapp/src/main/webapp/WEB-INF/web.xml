@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2012 Kirchnerei
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+	<display-name>kirchnerei glatteis webapp</display-name>
+
+	<context-param>
+		<description>
+			setup class for the CompositeBuilder instance
+		</description>
+		<param-name>kirchnerei.grundstein.composite.Setup</param-name>
+		<param-value>kirchnerei.glatteis.webapp.WebappSetup</param-value>
+	</context-param>
+	<context-param>
+		<param-name>config-service-class</param-name>
+		<param-value>kirchnerei.grundstein.click.service.GrundsteinConfigureService</param-value>
+	</context-param>
+
+	<listener>
+		<description>
+			initialized the CompositeBuilder instance
+		</description>
+		<listener-class>kirchnerei.grundstein.webapp.HttpCompositeBuilderListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+		<init-param>
+			<param-name>statusEnabledOnHosts</param-name>
+			<param-value>*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logLevel</param-name>
+			<param-value>WARN</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>ClickServlet</servlet-name>
+		<servlet-class>kirchnerei.grundstein.click.GrundsteinClickServlet</servlet-class>
+		<init-param>
+			<param-name>type-converter-class</param-name>
+			<param-value>kirchnerei.grundstein.click.util.GrundsteinTypeConverter</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ClickServlet</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ScriptResourceServlet</servlet-name>
+		<servlet-class>kirchnerei.grundstein.webapp.HttpTextResourceServlet</servlet-class>
+		<init-param>
+			<param-name>kirchnerei.grundstein.webapp.HttpETagStrategy</param-name>
+			<param-value>kirchnerei.glatteis.resources.TimeoutETagStrategy</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kirchnerei.grundstein.webapp.TextResources</param-name>
+			<param-value>kirchnerei.glatteis.resources.ScriptResources</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ScriptResourceServlet</servlet-name>
+		<url-pattern>/assets/js/jquery.js</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>StyleResourceServlet</servlet-name>
+		<servlet-class>kirchnerei.grundstein.webapp.HttpTextResourceServlet</servlet-class>
+		<init-param>
+			<param-name>kirchnerei.grundstein.webapp.HttpETagStrategy</param-name>
+			<param-value>kirchnerei.glatteis.resources.TimeoutETagStrategy</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kirchnerei.grundstein.webapp.TextResources</param-name>
+			<param-value>kirchnerei.glatteis.resources.StyleResources</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StyleResourceServlet</servlet-name>
+		<url-pattern>/assets/css/bootstrap.css</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>home.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

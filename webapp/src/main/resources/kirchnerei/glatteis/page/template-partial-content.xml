@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<status>partial</status>
+	<title><![CDATA[$messages.pageTitle - $messages.appTitle]]></title>
+	<navigation><![CDATA[#parse($navigation)]]></navigation>
+	<content><![CDATA[#parse($path)]]></content>
+	<notify><![CDATA[#notifylist($notify)]]></notify>
+	<actionlist><![CDATA[$actionlist]]></actionlist>
+</page>

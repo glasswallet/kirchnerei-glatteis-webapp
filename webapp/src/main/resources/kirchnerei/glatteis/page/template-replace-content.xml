@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<status>replace</status>
+	<title><![CDATA[$messages.pageTitle - $messages.appTitle]]></title>
+	<content><![CDATA[#parse($path)]]></content>
+	<actionlist><![CDATA[$actionlist]]></actionlist>
+</page>

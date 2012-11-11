@@ -42,7 +42,7 @@ var website = (function (window, $) {
 		};
 
 	/**
-	 * Initalized the application
+	 * Initialized the application
 	 *
 	 * @param {String} contextPath the context path of the application
 	 * @param {String} actionList a string with json array of actions
